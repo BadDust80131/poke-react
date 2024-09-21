@@ -20,7 +20,7 @@ const PokemonCard = ({ pokemon, details }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <CardActionArea onClick={() => navigate("/pokemon/" + pokemon.name)}>
+      <CardActionArea onClick={() => navigate("/pokemon/" + details.id)}>
         <Link to="pokemon">
           {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
         </Link>
