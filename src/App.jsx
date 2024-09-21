@@ -3,8 +3,16 @@ import "./App.css";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { CardActionArea, CardMedia } from "@mui/material";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const PokemonCard = ({ pokemon, details }) => {
+  PokemonCard.propTypes = {
+    pokemon: PropTypes.object,
+    details: PropTypes.object,
+  };
+  const navigate = useNavigate();
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -12,8 +20,10 @@ const PokemonCard = ({ pokemon, details }) => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <CardActionArea>
-        {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
+      <CardActionArea onClick={() => navigate("/pokemon/" + pokemon.name)}>
+        <Link to="pokemon">
+          {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
+        </Link>
         <CardMedia
           component="img"
           image={
@@ -88,7 +98,7 @@ function App() {
         const details = pokeData[pokemon.name];
 
         if (!details) {
-          return <div>Loading...</div>;
+          return <div key={Math.random()}>Loading...</div>;
         }
         return (
           <PokemonCard
