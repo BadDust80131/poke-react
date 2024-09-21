@@ -4,6 +4,32 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { CardActionArea, CardMedia } from "@mui/material";
 
+const PokemonCard = ({ pokemon, details }) => {
+  return (
+    <Card>
+      <CardActionArea>
+        {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
+        <CardMedia
+          component="img"
+          image={details.sprites.front_default}
+          alt={pokemon.name}
+        ></CardMedia>
+        <CardContent>
+          {details ? (
+            <>
+              <p>ID: {details.id}</p>
+              <p>Height: {Math.round(details.height * 3.937)} in</p>
+              <p>Weight: {Math.round(details.weight / 4.536)} lb</p>
+            </>
+          ) : (
+            <p>Loading details...</p>
+          )}
+        </CardContent>
+      </CardActionArea>
+    </Card>
+  );
+};
+
 function App() {
   const [data, setData] = useState(null);
   const [pokeData, setPokeData] = useState({});
@@ -56,27 +82,11 @@ function App() {
           return <div>Loading...</div>;
         }
         return (
-          <Card key={index}>
-            <CardActionArea>
-              {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
-              <CardMedia
-                component="img"
-                image={details.sprites.front_default}
-                alt={pokemon.name}
-              ></CardMedia>
-              <CardContent>
-                {details ? (
-                  <>
-                    <p>ID: {details.id}</p>
-                    <p>Height: {Math.round(details.height * 3.937)} in</p>
-                    <p>Weight: {Math.round(details.weight / 4.536)} lb</p>
-                  </>
-                ) : (
-                  <p>Loading details...</p>
-                )}
-              </CardContent>
-            </CardActionArea>
-          </Card>
+          <PokemonCard
+            key={index}
+            pokemon={pokemon}
+            details={details}
+          ></PokemonCard>
         );
       })}
     </div>
