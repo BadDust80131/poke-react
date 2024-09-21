@@ -5,13 +5,22 @@ import CardContent from "@mui/material/CardContent";
 import { CardActionArea, CardMedia } from "@mui/material";
 
 const PokemonCard = ({ pokemon, details }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
-    <Card>
+    <Card
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <CardActionArea>
         {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
         <CardMedia
           component="img"
-          image={details.sprites.front_default}
+          image={
+            isHovered
+              ? details.sprites.front_shiny
+              : details.sprites.front_default
+          }
           alt={pokemon.name}
         ></CardMedia>
         <CardContent>
