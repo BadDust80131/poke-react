@@ -5,6 +5,10 @@
   text-align: center;
 }
 
+.css-46bh2p-MuiCardContent-root {
+  padding-top: 0;
+}
+
 #grid-holder {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
