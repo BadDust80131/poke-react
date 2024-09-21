@@ -7,6 +7,30 @@
 
 #grid-holder {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
+}
+
+/* Medium screens (tablet size) */
+@media (min-width: 600px) {
+  #grid-holder {
+    grid-template-columns: repeat(4, 1fr); /* 2 columns on medium screens */
+  }
+}
+
+/* Large screens (desktop size) */
+@media (min-width: 900px) {
+  #grid-holder {
+    grid-template-columns: repeat(5, 1fr); /* 3 columns on large screens */
+  }
+}
+
+/* Extra large screens */
+@media (min-width: 1200px) {
+  #grid-holder {
+    grid-template-columns: repeat(
+      6,
+      1fr
+    ); /* 4 columns on extra-large screens */
+  }
 }

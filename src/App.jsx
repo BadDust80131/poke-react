@@ -42,10 +42,6 @@ function App() {
     }
   }, [data]);
 
-  useEffect(() => {
-    console.log(pokeData.charmander); // This will log the updated pokeData state correctly
-  }, [pokeData]);
-
   if (!data) {
     return <div>Loading...</div>;
   }
