@@ -6,7 +6,13 @@ const Pokemon = () => {
   const navigate = useNavigate();
   const { name } = useParams();
   const [data, setData] = useState(null);
+
   useEffect(() => {
+    if (parseInt(name) < 1 || parseInt(name) > 151) {
+      navigate("/");
+      return;
+    }
+
     const fetchData = async () => {
       const response = await fetch("https://pokeapi.co/api/v2/pokemon/" + name);
       const data = await response.json();

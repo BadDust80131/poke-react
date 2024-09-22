@@ -60,7 +60,6 @@ function App() {
       );
       const data = await response.json();
       setData(data);
-      console.log(data.results);
     };
     fetchData();
   }, []);
@@ -81,7 +80,6 @@ function App() {
           newPokeData[pokemon.name] = pokemon.details;
         });
         setPokeData(newPokeData);
-        console.log(pokeData);
       };
 
       getPokeData();
