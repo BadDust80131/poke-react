@@ -8,6 +8,7 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import Pokemon from "./Pokemon.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import SignUp from "./SignUp.jsx";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "pokemon/:name",
     element: <Pokemon />,
+  },
+  {
+    path: "/signup",
+    element: <SignUp />,
   },
 ]);
 
